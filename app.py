@@ -5,15 +5,12 @@ import plotly.express as px
 # Configuração do layout do Streamlit
 st.set_page_config(page_title="Análise de Desmatamento - PRODES", layout="wide")
 
-# Título do aplicativo
 st.title("Análise do Desmatamento na Amazônia Legal")
 st.subheader("Dados disponibilizados pelo PRODES")
 
-# Upload do arquivo CSV
 uploaded_file = st.file_uploader("Carregue o arquivo desejado", type="csv")
 
 if uploaded_file:
-    # Carregar os dados
     df = pd.read_csv(uploaded_file)
 
     # Conversão da coluna 'referencia' para formato datetime
@@ -36,7 +33,6 @@ if uploaded_file:
     labels={"referencia": "Ano", "area_total_desmatamento": "Área Total Desmatada (km²)"}
     )
     st.plotly_chart(fig_total, use_container_width=True)
-
 
     # Desmatamento por estado
     estados = ['acre', 'amazonas', 'amapa', 'maranhao', 'mato_grosso', 'para', 'rondonia', 'roraima', 'tocantins']
